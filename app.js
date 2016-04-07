@@ -8,7 +8,7 @@ Vmail = angular.module('Vmail', ['ui.router', 'ui.bootstrap'])
             .state('signin', {
               url: '/signin',
               templateUrl: 'templates/signin.html',
-              controller: 'DashboardCtrl'
+              controller: 'authCtrl'
             })
             .state('index', {
               url: '',

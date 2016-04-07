@@ -1,7 +1,7 @@
 Vmail.controller('IndexCtrl',
   ['$scope', '$state',
   function($scope, $state){
-    if (true) {
+    if (false) {
       $scope.messages = [];
     } else {
       $state.go('signin');
