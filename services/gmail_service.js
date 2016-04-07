@@ -21,14 +21,14 @@ Vmail.factory('Gmail', ['$window', function($window){
   var getMessageList = function(){
     gmailIdList.forEach(function(id){
       gapi.client.gmail.users.messages.get({'userId': 'me', id: id}).then(function(data){
-        obj.gmailMessages.push(data);
+        obj.gmailMessages.push(JSON.parse(data));
       });
     });
   };
 
   obj.loadGmailApi = function() {
     window.checkAuth();
-    window.handleAuthClick();
+    gapi.auth.authorize({scope: scopes, client_id: clientId});
     gapi.client.load('gmail', 'v1', getEmailIdList);
   };
 
