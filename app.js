@@ -1,4 +1,4 @@
-Vamil = angular.module('Vmail', ['ui.router', 'ui.bootstrap'])
+Vmail = angular.module('Vmail', ['ui.router', 'ui.bootstrap'])
 
   //UI Router Config
   .config(['$urlRouterProvider', '$stateProvider',
@@ -7,7 +7,8 @@ Vamil = angular.module('Vmail', ['ui.router', 'ui.bootstrap'])
             .state('index', {
               url: '',
               templateUrl: 'templates/index.html',
-            })
+              controller: 'DashboardCtrl'
+            });
 
           }
         ])

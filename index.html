@@ -10,15 +10,27 @@
 
   <!-- Custom Styling -->
   <link rel="stylesheet" href="assets/css/styles.css">
-  
+
 </head>
 <body>
 
   <ui-view></ui-view>
 
+  <div id="authorize-div" style="display: none">
+    <span>Authorize access to Gmail API</span>
+    <!--Button for the user to click to initiate auth sequence -->
+    <button id="authorize-button" onclick="handleAuthClick(event)">
+      Authorize
+    </button>
+  </div>
+
+  <div id='output'></div>
+
 
   <!-- minified JQuery -->
   <script src="vendor/jquery-1.12.3.min.js"></script>
+
+  <script src="assets/gapi.js"></script>
 
   <!-- minified Bootstrap -->
   <script src="vendor/bootstrap.min.js"></script>
@@ -28,6 +40,9 @@
 
   <!-- minified underscore -->
   <script src="vendor/underscore-min.js"></script>
+
+  <!-- GMail API Scripts -->
+  <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
 
   <!-- minified angular-ui-bootstrap -->
   <script src="vendor/ui-bootstrap-tpls-1.2.5.min.js"></script>
@@ -40,9 +55,9 @@
   <!-- controllers -->
   <script type="text/javascript" src="controllers/dashboard_controller.js"></script>
   <!-- directives -->
-  <script type="text/javascript" src="directives/stock_directive.js"></script>
+  <!-- <script type="text/javascript" src="directives/stock_directive.js"></script> -->
   <!-- services -->
-  <script type="text/javascript" src="services/stocks_service.js"></script>
+  <!-- <script type="text/javascript" src="services/gmail_service.js"></script> -->
 
 </body>
 </html>
