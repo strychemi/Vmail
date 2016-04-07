@@ -1,11 +1,18 @@
-Vmail.controller('DashboardCtrl', ['$scope', function($scope){
+Vmail.controller('DashboardCtrl', ['$scope', 'Gmail', function($scope, Gmail){
 
-  $scope.test = "123";
+  $scope.messages = Gmail.gmailMessages;
 
   $scope.setGmailId = function() {
-    window.gmailId = $scope.gmailId;
-    window.checkAuth();
-    console.log($scope.gmailId);
-    console.log(window.gmailId);
+    // window.gmailId = $scope.gmailId;
+    Gmail.loadGmailApi();
   };
+
+  $scope.$watch(function() {
+      return Gmail.gmailMessages;
+    },
+    function(newValue) {
+      $scope.messages = newValue;
+    });
+
+
 }]);

@@ -1,38 +1,37 @@
 Vmail.factory('Gmail', ['$window', function($window){
 
   var obj = {};
+  var gapi = window.gapi;
+  var gmailIdList = [];
+  obj.gmailMessages = [];
 
-  var gapi = $window.gapi;
 
-  var apiKey = 'AIzaSyDVWTQxCJ83f2zCXgdvb_Z1Pj1HA1CnyCk';
-
-  var clientId = '964487304071-isgtc4bqnc1otdfj5cegfdqb5gfkmsr1.apps.googleusercontent.com';
-
-  var scopes = 'https://www.googleapis.com/auth/plus.me';
-
-  function appendResults(text) {
-    var results = document.getElementById('results');
-    results.appendChild(document.createElement('P'));
-    results.appendChild(document.createTextNode(text));
-  }
-
-  function makeRequest() {
-    var request = gapi.client.gmail.users.messages.get({
-      'id': '1',
-      'userId': 'vcstestemail'
-    });
-    request.then(function(response) {
-      appendResults(response.result.longUrl);
+  var getEmailIdList = function(){
+    gapi.client.gmail.users.messages.list({'userId': 'me', 'maxResults': 20})
+    .then(function(response) {
+      JSON.parse(response.body).messages.forEach(function(message){
+        gmailIdList.push(message["id"]);
+      });
+      getMessageList();
     }, function(reason) {
       console.log('Error: ' + reason.result.error.message);
     });
-  }
+  };
 
-  function init() {
-    gapi.client.setApiKey('AIzaSyDVWTQxCJ83f2zCXgdvb_Z1Pj1HA1CnyCk');
-    gapi.client.load('gmail', 'v1').then(makeRequest);
-  }
+  var getMessageList = function(){
+    gmailIdList.forEach(function(id){
+      gapi.client.gmail.users.messages.get({'userId': 'me', id: id}).then(function(data){
+        obj.gmailMessages.push(data);
+      });
+    });
+  };
 
-return obj;
+  obj.loadGmailApi = function() {
+    window.checkAuth();
+    window.handleAuthClick();
+    gapi.client.load('gmail', 'v1', getEmailIdList);
+  };
+
+  return obj;
 
 }]);
