@@ -12,10 +12,10 @@ Vmail = angular.module('Vmail', ['ui.router', 'ui.bootstrap'])
             })
             .state('index', {
               url: '',
-              controller: 'IndexCtrl',
               views: {
                 '': {
-                  templateUrl: 'templates/index.html'
+                  templateUrl: 'templates/index.html',
+                  controller: 'IndexCtrl'
                 },
                 'navbar': {
                   templateUrl: 'templates/navbar.html'
@@ -27,37 +27,37 @@ Vmail = angular.module('Vmail', ['ui.router', 'ui.bootstrap'])
             })
             .state('index.inbox', {
               url: '/inbox',
-              controller: 'InboxCtrl',
               views: {
                 '': {
-                  templateUrl: 'templates/inbox.html'
+                  templateUrl: 'templates/inbox.html',
+                  controller: 'InboxCtrl'
                 }
               }
             })
             .state('index.starred', {
               url: '/starred',
-              controller: 'StarredCtrl',
               views: {
                 '': {
-                  templateUrl: 'templates/starred.html'
+                  templateUrl: 'templates/starred.html',
+                  controller: 'starredCtrl'
                 }
               }
             })
             .state('index.sent', {
               url: '/sent',
-              controller: 'sentCtrl',
               views: {
                 '': {
-                  templateUrl: 'templates/sent.html'
+                  templateUrl: 'templates/sent.html',
+                  controller: 'sentCtrl'
                 }
               }
             })
             .state('index.draft', {
               url: '/draft',
-              controller: 'draftCtrl',
               views: {
                 '': {
-                  templateUrl: 'templates/draft.html'
+                  templateUrl: 'templates/draft.html',
+                  controller: 'draftCtrl'
                 }
               }
             });

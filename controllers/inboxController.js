@@ -1,5 +1,13 @@
 Vmail.controller('InboxCtrl',
-  ['$scope',
-  function($scope){
-    
+  ['$scope', 'Gmail',
+  function($scope, Gmail){
+    Gmail.loadGmailApi();
+    $scope.messages = { array: Gmail.gmailMessages };
+
+    // $scope.$watch(function() {
+    //     return Gmail.gmailMessages;
+    //   },
+    //   function(newValue) {
+    //     $scope.messages = newValue;
+    //   });
 }]);
