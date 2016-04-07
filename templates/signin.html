@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <input type="text" name="" id="" ng-model="gmailId">
+      <button ng-click="setGmailId()">Set Gmail Id</button>
+      <div id="authorize-div" style="display: none">
+        <span>Authorize access to Gmail API</span>
+        <!--Button for the user to click to initiate auth sequence -->
+        <button id="authorize-button" onclick="handleAuthClick(event)">
+          Authorize
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

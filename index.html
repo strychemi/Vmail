@@ -14,17 +14,13 @@
 </head>
 <body>
 
-  <ui-view></ui-view>
-
-  <div id="authorize-div" style="display: none">
-    <span>Authorize access to Gmail API</span>
-    <!--Button for the user to click to initiate auth sequence -->
-    <button id="authorize-button" onclick="handleAuthClick(event)">
-      Login
-    </button>
+  <div ui-view="navbar"></div>
+  <div class="col-xs-2">
+    <div ui-view="leftPanel"></div>
   </div>
-
-  <div id='output'></div>
+  <div class="col-xs-10">
+    <ui-view></ui-view>
+  </div>
 
 
   <!-- minified JQuery -->
