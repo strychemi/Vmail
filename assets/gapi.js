@@ -31,7 +31,7 @@ function makeRequest() {
 // Developer Console, https://console.developers.google.com
 var clientId = '964487304071-isgtc4bqnc1otdfj5cegfdqb5gfkmsr1.apps.googleusercontent.com';
 
-var scopes = 'https://mail.google.com';
+var scopes = 'https://mail.google.com https://www.googleapis.com/auth/userinfo.email';
 /**
  * Check if current user has authorized this application.
  */
@@ -88,7 +88,7 @@ function loadGmailApi() {
  */
 function listLabels(userId) {
   var request = gapi.client.gmail.users.messages.list({
-    'userId': userId
+    'userId': 'me'
   });
 
   request.execute(function(resp) {
