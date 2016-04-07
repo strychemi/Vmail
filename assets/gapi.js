@@ -1,5 +1,6 @@
 var apiKey = 'AIzaSyDVWTQxCJ83f2zCXgdvb_Z1Pj1HA1CnyCk';
 
+var gmailId;
 
 
 function appendResults(text) {
@@ -20,10 +21,10 @@ function makeRequest() {
   });
 }
 
-function init() {
-  gapi.client.setApiKey(apiKey);
-  gapi.client.load('gmail', 'v1').then(makeRequest);
-}
+// function init() {
+//   gapi.client.setApiKey(apiKey);
+//   gapi.client.load('gmail', 'v1').then(makeRequest);
+// }
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // Your Client ID can be retrieved from your project in the Google
@@ -78,21 +79,21 @@ function handleAuthClick(event) {
  * is loaded.
  */
 function loadGmailApi() {
-  gapi.client.load('gmail', 'v1', listLabels);
+  gapi.client.load('gmail', 'v1');
 }
 
 /**
  * Print all Labels in the authorized user's inbox. If no labels
  * are found an appropriate message is printed.
  */
-function listLabels() {
+function listLabels(userId) {
   var request = gapi.client.gmail.users.messages.list({
-    'userId': 'jgisin@gmail.com'
+    'userId': userId
   });
 
   request.execute(function(resp) {
-    var labels = resp;
-    console.log(labels);
+    var messages = resp;
+    console.log(messages);
     // appendPre('Labels:');
 
     // if (labels && labels.length > 0) {
