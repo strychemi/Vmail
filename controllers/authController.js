@@ -9,12 +9,7 @@ Vmail.controller('authCtrl', ['$scope', 'Gmail', function($scope, Gmail){
     Gmail.loadGmailApi();
   };
 
-  $scope.$watch(function() {
-      return Gmail.gmailMessages;
-    },
-    function(newValue) {
-      $scope.messages = newValue;
-    });
+
 
 
 }]);
