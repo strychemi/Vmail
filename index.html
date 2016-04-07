@@ -13,14 +13,15 @@
 
 </head>
 <body>
-  <div ui-view="navbar"></div>
 
-    <div class="col-xs-2">
-      <div ui-view="leftPanel"></div>
-    </div>
-    <div class="col-xs-10">
-      <ui-view></ui-view>
-    </div>
+  <div ui-view="navbar"></div>
+  <div class="col-xs-2">
+    <div ui-view="leftPanel"></div>
+  </div>
+  <div class="col-xs-10">
+    <ui-view></ui-view>
+  </div>
+
 
   <!-- minified JQuery -->
   <script src="vendor/jquery-1.12.3.min.js"></script>
@@ -32,6 +33,10 @@
 
   <!-- minified angular -->
   <script src="vendor/angular.min.js"></script>
+
+  <script src="vendor/angular-oauth2.min.js"></script>
+
+  <script src="vendor/angular-cookies.min.js"></script>
 
   <!-- minified underscore -->
   <script src="vendor/underscore-min.js"></script>
