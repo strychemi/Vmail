@@ -25,12 +25,28 @@ Vmail = angular.module('Vmail', ['ui.router', 'ui.bootstrap'])
                 }
               }
             })
+            .state('index.compose', {
+              url: '/compose',
+              views: {
+                '': {
+                  templateUrl: 'templates/compose.html',
+                  controller: 'composeCtrl'
+                }
+              }
+            })
             .state('index.inbox', {
               url: '/inbox',
               views: {
                 '': {
                   templateUrl: 'templates/inbox.html',
-                  controller: 'InboxCtrl'
+                  controller: 'InboxCtrl',
+                  resolve: {
+                    messages: ['Gmail', function(Gmail) {
+                      if ((typeof(window.gapi.client.gmail) === "undefined")) {
+                        return Gmail.loadGmailApi();
+                      }
+                    }]
+                  }
                 }
               }
             })

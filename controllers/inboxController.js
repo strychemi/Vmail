@@ -1,13 +1,20 @@
 Vmail.controller('InboxCtrl',
-  ['$scope', 'Gmail',
-  function($scope, Gmail){
-    Gmail.loadGmailApi();
-    $scope.messages = { array: Gmail.gmailMessages };
+  ['$scope', 'Gmail', 'messages',
+  function($scope, Gmail, messages){
 
-    // $scope.$watch(function() {
-    //     return Gmail.gmailMessages;
-    //   },
-    //   function(newValue) {
-    //     $scope.messages = newValue;
-    //   });
+    $scope.messages = { array: Gmail.gmailMessages };
+    // if ((typeof(window.gapi.client.gmail) === "undefined")) {
+    //   $scope.messages = { array: Gmail.gmailMessages };
+    // } else {
+    //   $scope.messages = { array: Gmail.gmailMessages };
+    //   //$state.go('signin');
+    // }
+
+
+    $scope.$watch(function() {
+        return Gmail.gmailMessages;
+      },
+      function(newValue) {
+        $scope.messages = { array: newValue };
+      });
 }]);
