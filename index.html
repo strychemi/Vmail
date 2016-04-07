@@ -12,7 +12,28 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 
 </head>
-<body>
+<body ng-controller="IndexCtrl">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4">
+        <input type="text" name="" id="" ng-model="gmailId">
+        <button ng-click="setGmailId()">Set Gmail Id</button>
+        <div id="authorize-div" style="display: none">
+          <span>Authorize access to Gmail API</span>
+          <!--Button for the user to click to initiate auth sequence -->
+          <button id="authorize-button" onclick="handleAuthClick(event)">
+            Authorize
+          </button>
+        </div>
+
+
+        <a ui-sref="index.inbox">INBOX</a>
+      </div>
+
+
+    </div>
+  </div>
 
   <div ui-view="navbar"></div>
   <div class="col-xs-2">
