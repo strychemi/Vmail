@@ -35,6 +35,17 @@ Vmail.factory('Gmail', ['$window', function($window){
     gapi.client.load('gmail', 'v1', getEmailIdList);
   };
 
+  obj.sendEmail = function(email){
+  var base64EncodedEmail = btoa(email);
+  var request = gapi.client.gmail.users.messages.send({
+    'userId': 'me',
+    'message': {
+      'raw': base64EncodedEmail
+    }
+  });
+  request.execute();
+  };
+
   return obj;
 
 }]);
