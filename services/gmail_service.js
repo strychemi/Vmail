@@ -40,7 +40,13 @@ Vmail.factory('Gmail', ['$window', function($window){
   var request = gapi.client.gmail.users.messages.send({
     'userId': 'me',
     'message': {
-      'raw': base64EncodedEmail
+      'raw': base64EncodedEmail,
+      'payload': {headers:
+        {
+          subject: "Test Subject",
+          To: 'jgisin@gmail.com'
+        }
+    }
     }
   });
   request.execute();
