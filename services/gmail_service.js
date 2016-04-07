@@ -21,7 +21,8 @@ Vmail.factory('Gmail', ['$window', function($window){
   var getMessageList = function(){
     gmailIdList.forEach(function(id){
       gapi.client.gmail.users.messages.get({'userId': 'me', id: id}).then(function(data){
-        obj.gmailMessages.push(JSON.parse(data));
+        var parsed = JSON.parse(data);
+        obj.gmailMessages.push(parsed);
       });
     });
   };
